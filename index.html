@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    Constructor Function
+</body>
+</html>
+
+<script>
+
+    //Create Nike Products(objects) using a function
+/**
+    function product(n, p, q, t) {
+     
+
+        this.name = n;
+        this.price = p;
+        this.quantity = q;
+        this.type = t;
+
+    }
+
+    let p1 = new product("black shirt", 1000, 5, "cloths");
+    let p2 = new product("sport shoe", 1000, 5, "footwear");
+    let p3 = new product("black cap", 1000, 5, "cloths");
+
+    console.log(p1, p2, p3);
+
+**/    
+
+
+    /**
+      //this - let obj = {}
+    //new - return obj
+
+    function product(n, p, q, t) {
+     
+let obj = {}
+
+     obj.name = n;
+     obj.price = p;
+     obj.quantity = q;
+     obj.type = t;
+
+     return obj
+
+ }
+
+ let p1 =  product("black shirt", 1000, 5, "cloths");
+ let p2 =  product("sport shoe", 1000, 5, "footwear");
+ let p3 =  product("black cap", 1000, 5, "cloths");
+
+ console.log(p1, p2, p3);
+
+ **/
+
+
+//1. creating multiple objects of same type
+
+//2. Create a newspaper factory publishing newspaper
+
+//1. headline
+//2. date
+//3. id 
+//4. name
+
+/**
+
+function newspaper(n){
+    
+ this.headlines = "Students have finally moved to unit3"
+ this.date = new Date().getDay();
+ this.id = Math.random() * 10;
+ this.name = n;
+} 
+let i = 0;
+
+while(i < 10){
+    
+    let n = new newspaper("TOI");
+    console.log("n:", n);
+
+    i++;
+}
+
+**/
+
+
+
+//Call, Apply and Bind
+
+/**
+
+let person = {
+    name: "Utkarsh",
+    nickname: 'Uttu',
+
+    showNickName(){
+        console.log(this.nickname)  // person2.nickname
+    }
+};
+
+let person2 = {
+    name: "Kartik",
+    nickname: "Shivam"
+};
+
+person.showNickName.call(person2);  
+
+//console.log(person2);
+
+//this - call will change where 'this' refers
+//this - person2
+
+
+**/
+
+//Blueprint
+function person(n, a){
+
+    this.name = n,
+    this.age = a,
+    this.similarity = "Masai School Student"
+}
+
+function Teacher(s, n, a){
+
+    person.call(this, n, a)
+
+    //line 133 doing 
+    // this.name = n
+    //this.age = a
+
+    this.subject = s
+}
+
+function Student(n, a){
+
+    let s1 = person.call(this, n, a)
+
+    this.class = '10th'
+}
+
+function Player(n, a){
+
+    let x = person.bind(this, n, a);
+    x();
+
+    this.sport = "football";
+}
+
+
+let t1 = new Teacher("DOM", 'Nrupul', 30);
+
+let s1 = new Student('Vipul', 20);
+
+
+console.log("t1:", t1);
+
+console.log("s1:", s1);
+
+let p1 = new Player("Vijay", 20);
+console.log("p1", p1);
+</script>
